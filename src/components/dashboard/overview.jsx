@@ -25,16 +25,16 @@ const Overview = () => {
         </div>
         <div className="flex flex-col ml-10 w-3/5 items-center">
           <div className="flex w-full h-auto  justify-between mb-10 px-20">
-            <div className="flex items-center justify-center border border-bright px-16 py-2 cursor-pointer rounded">
+            <div className="flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded">
               <p className="text-bright">Active</p>
             </div>
-            <div className="flex items-center justify-center border border-bright px-16 py-2 cursor-pointer rounded">
+            <div className="flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded">
               <p className="text-bright">Paid</p>
             </div>
-            <div className="flex items-center justify-center border border-bright px-16 py-2 cursor-pointer rounded">
+            <div className="flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded">
               <p className="text-bright">Pending</p>
             </div>
-            <div className="flex items-center justify-center border border-bright px-16 py-2 cursor-pointer rounded">
+            <div className="flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded">
               <p className="text-bright">All</p>
             </div>
           </div>
@@ -44,7 +44,7 @@ const Overview = () => {
               <div className="flex flex-col w-3/5 mr-5 ml-5">
                 <p>Kaffir Lime Vodka, Lemongrass, Ginger, Citrus</p>
                 <p className="font-bold mt-2 mb-2">Tom Yummy | x 2</p>
-                <p>-- table 1 --</p>
+                <p>-- Table 1 --</p>
               </div>
               <div className="flex flex-col w-1/5 items-center">
                 <p className="text-bright text-lg">Frw 5,000</p>
@@ -59,7 +59,7 @@ const Overview = () => {
               <div className="flex flex-col w-3/5 mr-5 ml-5">
                 <p>Kaffir Lime Vodka, Lemongrass, Ginger, Citrus</p>
                 <p className="font-bold mt-2 mb-2">Tom Yummy | x 2</p>
-                <p>-- table 1 --</p>
+                <p>-- Table 1 --</p>
               </div>
               <div className="flex flex-col w-1/5 items-center">
                 <p className="text-bright text-lg">Frw 5,000</p>
@@ -74,7 +74,7 @@ const Overview = () => {
               <div className="flex flex-col w-3/5 mr-5 ml-5">
                 <p>Kaffir Lime Vodka, Lemongrass, Ginger, Citrus</p>
                 <p className="font-bold mt-2 mb-2">Tom Yummy | x 2</p>
-                <p>-- table 1 --</p>
+                <p>-- Table 1 --</p>
               </div>
               <div className="flex flex-col w-1/5 items-center">
                 <p className="text-bright text-lg">Frw 5,000</p>
@@ -89,7 +89,7 @@ const Overview = () => {
               <div className="flex flex-col w-3/5 mr-5 ml-5">
                 <p>Kaffir Lime Vodka, Lemongrass, Ginger, Citrus</p>
                 <p className="font-bold mt-2 mb-2">Tom Yummy | x 2</p>
-                <p>-- table 1 --</p>
+                <p>-- Table 1 --</p>
               </div>
               <div className="flex flex-col w-1/5 items-center">
                 <p className="text-bright text-lg">Frw 5,000</p>

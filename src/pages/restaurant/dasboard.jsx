@@ -29,7 +29,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex w-full">
+    <div className="flex w-full bg-bright">
       <div className="flex flex-col py-10 items-center w-1/5 h-screen bg-black">
         <p className="text-3xl font-bold text-bright">
           Supa<span className="text-white">Menu</span>
