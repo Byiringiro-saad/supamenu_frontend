@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router";
 
+//icons
+import { BiPlay } from "react-icons/bi";
+
 //components
 import Nav from "../../components/nav";
 
@@ -17,10 +20,10 @@ const CreateRestaurant = () => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col items-center">
       <Nav />
-      <div className="flex">
-        <div className="flex flex-col w-1/5 px-5 py-5 pb-20 h-auto ml-10 mt-10 border border-gray rounded">
+      <div className="flex w-4/6">
+        <div className="flex flex-col w-2/5 px-5 py-5 pb-20 h-auto ml-10 mt-10 border border-gray rounded">
           <p className="text-lg font-bold text-black mb-5">
             Create your restaurant profile
           </p>
@@ -77,8 +80,20 @@ const CreateRestaurant = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-4/5 px-5 py-5 h-auto ml-10 mt-10 mr-10 border border-gray rounded">
+        <div className="flex w-5/6 px-5 py-5 h-auto ml-10 mt-10 mr-10 border border-gray rounded">
           <Outlet />
+        </div>
+      </div>
+      <div className="flex w-full justify-center mt-10">
+        <div className="flex w-3/5 justify-between">
+          <div className="flex px-10 py-3 items-center rounded border border-gray cursor-pointer">
+            <BiPlay className="text-xl mr-2 text-black" />
+            <p className="text-black">Back</p>
+          </div>
+          <div className="flex px-10 py-3 bg-bright items-center rounded cursor-pointer">
+            <p className="text-white">Next</p>
+            <BiPlay className="text-xl ml-2 text-white " />
+          </div>
         </div>
       </div>
     </div>
