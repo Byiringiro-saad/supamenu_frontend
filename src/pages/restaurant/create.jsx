@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router";
 
-//icons
-import { BiPlay } from "react-icons/bi";
-
 //components
 import Nav from "../../components/nav";
 
@@ -82,18 +79,6 @@ const CreateRestaurant = () => {
         </div>
         <div className="flex w-5/6 px-5 py-5 h-auto ml-10 mt-10 mr-10 border border-gray rounded">
           <Outlet />
-        </div>
-      </div>
-      <div className="flex w-full justify-center mt-10">
-        <div className="flex w-3/5 justify-between">
-          <div className="flex px-10 py-3 items-center rounded border border-gray cursor-pointer">
-            <BiPlay className="text-xl mr-2 text-black" />
-            <p className="text-black">Back</p>
-          </div>
-          <div className="flex px-10 py-3 bg-bright items-center rounded cursor-pointer">
-            <p className="text-white">Next</p>
-            <BiPlay className="text-xl ml-2 text-white " />
-          </div>
         </div>
       </div>
     </div>
