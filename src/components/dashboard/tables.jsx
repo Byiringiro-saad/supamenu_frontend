@@ -247,7 +247,7 @@ const Tables = () => {
           </div>
           <div className="flex justify-between border-t-2 border-t-gray h-12 items-center">
             <p className="text-black">Choose location</p>
-            <p className="text-gray">1,600</p>
+            <p className="text-gray"></p>
           </div>
         </div>
       </div>
