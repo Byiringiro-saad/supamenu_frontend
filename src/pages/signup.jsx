@@ -29,7 +29,8 @@ const Signup = () => {
         email: data.email,
         password: data.password,
       })
-      .then(() => {
+      .then((res) => {
+        localStorage.setItem("supamenu_token", res.data.token);
         toast.success("Welcome to Supamenu", {
           toastId: "123saad",
           position: "top-right",
