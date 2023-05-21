@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router";
 
+//icons
+import { FaPlay } from "react-icons//fa";
+
 //components
 import Nav from "../../components/nav";
 
@@ -14,6 +17,30 @@ const CreateRestaurant = () => {
   const handleActive = (text) => {
     setActive(text);
     navigate("/create/" + text);
+  };
+
+  const next = () => {
+    if (active === "one") {
+      setActive("two");
+      navigate("/create/two");
+    } else if (active === "two") {
+      setActive("three");
+      navigate("/create/three");
+    } else {
+      navigate("/create/three");
+    }
+  };
+
+  const back = () => {
+    if (active === "three") {
+      setActive("two");
+      navigate("/create/two");
+    } else if (active === "two") {
+      setActive("one");
+      navigate("/create/one");
+    } else {
+      navigate("/create/one");
+    }
   };
 
   return (
@@ -79,6 +106,22 @@ const CreateRestaurant = () => {
         </div>
         <div className="flex w-5/6 px-5 py-5 h-auto ml-10 mt-10 mr-10 border border-gray rounded">
           <Outlet />
+        </div>
+      </div>
+      <div className="flex w-3/6 h-40 items-center justify-between">
+        <div
+          className="flex px-10 py-3 items-center justify-around border rounded border-gray cursor-pointer"
+          onClick={back}
+        >
+          <FaPlay className="mr-2" />
+          <p>Back</p>
+        </div>
+        <div
+          className="flex px-10 bg-bright py-3 items-center justify-around rounded cursor-pointer"
+          onClick={next}
+        >
+          <FaPlay className="mr-2 text-white" />
+          <p className="text-white">Next</p>
         </div>
       </div>
     </div>

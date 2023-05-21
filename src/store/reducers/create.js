@@ -18,10 +18,10 @@ const restaurantCreateSlice = createSlice({
   },
   reducers: {
     AddMenu: (state, action) => {
-      return state.menu.push(action.payload);
+      state.menu = [...state.menu, action.payload];
     },
     removeMenu: (state, action) => {
-      return state.menu.filter((one) => one?.id === action.payload);
+      state.menu = state.menu.filter((item) => item?.id !== action.payload);
     },
     handleName: (state, action) => {
       state.name = action.payload;

@@ -7,6 +7,10 @@ const store = configureStore({
   reducer: {
     create: restaurantCreate,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export default store;
