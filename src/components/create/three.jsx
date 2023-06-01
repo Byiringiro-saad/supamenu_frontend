@@ -1,33 +1,28 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 //icons
 import { CgClose } from "react-icons/cg";
 
-//actions
-import { AddMenu, removeMenu } from "../../store/reducers/create";
-
 const Three = () => {
-  //config
-  const dispatch = useDispatch();
-
   //local data
   const [id, setId] = useState(0);
   const [name, setName] = useState("");
+  const [menu, setMenu] = useState([]);
   const [file, setFile] = useState(null);
   const [price, setPrice] = useState("");
   const [filename, setFilename] = useState(null);
   const [category, setCategory] = useState("Drink");
   const [ingredients, setIngredients] = useState("");
 
-  //redux data
-  const menu = useSelector((state) => state.create.menu);
-
   const handleAdd = () => {
     setId(id + 1);
-    dispatch(
-      AddMenu({ id: id, name, price, image: file, ingredients, category })
-    );
+
+    //read file
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onloadend = () => {};
+
     setName("");
     setPrice("");
     setFile(null);
@@ -40,7 +35,8 @@ const Three = () => {
   };
 
   const handleRemove = (id) => {
-    dispatch(removeMenu(id));
+    console.log(id);
+    setMenu([]);
   };
 
   return (
@@ -107,7 +103,9 @@ const Three = () => {
               key={item?.id}
             >
               <div className="flex w-5/6 p-2">
-                <div className="flex w-2/6 overflow-hidden h-full bg-gray rounded"></div>
+                <div className="flex w-2/6 overflow-hidden h-full bg-gray rounded">
+                  <img src={item?.preview} alt="item image" />
+                </div>
                 <div className="flex flex-col ml-5 pt-3">
                   <p className="font-bold">{item?.name}</p>
                   <p className="mt-2 mb-2">{item?.ingredients}</p>
