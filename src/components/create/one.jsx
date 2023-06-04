@@ -41,8 +41,6 @@ const One = () => {
       });
   };
 
-  const back = () => {};
-
   return (
     <form className="flex flex-col w-full" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col w-full">
@@ -105,12 +103,9 @@ const One = () => {
         </div>
       </div>
       <div className="flex w-full h-40 items-center justify-between">
-        <div
-          className="flex px-10 py-3 items-center justify-around border rounded border-gray cursor-pointer"
-          onClick={back}
-        >
-          <FaPlay className="mr-2" />
-          <p>Back</p>
+        <div className="flex px-10 py-3 items-center justify-around cursor-pointer">
+          {/* <FaPlay className="mr-2" />
+          <p>Back</p> */}
         </div>
         <button
           type="submit"

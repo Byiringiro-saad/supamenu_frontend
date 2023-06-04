@@ -25,24 +25,18 @@ const Two = () => {
     setFile(e.target.files[0]);
   };
 
-  const back = () => {
-    navigate("/create/one");
-  };
-
   const onSubmit = (data) => {
     setLoading(true);
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("type", data.type);
-    formData.append("opening", data.opening);
-    formData.append("closing", data.closing);
-    formData.append("location", data.location);
 
     axios
       .post(
         "/restaurants/two/",
         {
-          ...formData,
+          file: file,
+          type: data?.type,
+          opening: data?.opening,
+          closing: data?.closing,
+          location: data?.location,
           restaurant: localStorage.getItem("supamenu_restaurant_id"),
         },
         {
@@ -133,12 +127,9 @@ const Two = () => {
         </div>
       </div>
       <div className="flex w-full h-40 items-center justify-between">
-        <div
-          className="flex px-10 py-3 items-center justify-around border rounded border-gray cursor-pointer"
-          onClick={back}
-        >
-          <FaPlay className="mr-2" />
-          <p>Back</p>
+        <div className="flex px-10 py-3 items-center justify-around cursor-pointer">
+          {/* <FaPlay className="mr-2" />
+          <p>Back</p> */}
         </div>
         <button
           type="submit"
