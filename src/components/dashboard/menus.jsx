@@ -1,88 +1,147 @@
+import moment from "moment";
+import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+
 //icons
 import { AiFillEdit } from "react-icons/ai";
 import { MdOutlineAdd } from "react-icons/md";
 
+//features
+import axios from "../../features/axios";
+
 const Menus = () => {
+  //local data
+  const [products, setProducts] = useState([]);
+  const [active, setActive] = useState("Drink");
+
+  //fetching data
+  const { isLoading, data } = useQuery("orders", async () => {
+    const res = await axios.get(
+      `/products/restaurant/${localStorage.getItem("supamenu_restaurant_id")}`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("supamenu_token")}`,
+        },
+      }
+    );
+
+    return res.data;
+  });
+
+  const handleActive = (text) => {
+    setActive(text);
+  };
+
+  useEffect(() => {
+    if (data) {
+      setProducts(data?.menus?.filter((menu) => menu?.category === active));
+    }
+  }, [active, data]);
+
   return (
     <div className="flex w-full flex-col mt-5">
       <div className="flex flex-col bg-white border rounded border-gray w-full p-5">
         <div className="flex">
           <div className="flex flex-col">
             <p className="text-black text-xl">Menus</p>
-            <p className="text-gray">as of 25 May 2022, 09:41 PM</p>
+            <p className="text-gray">
+              {moment().format("MMMM Do YYYY, h:mm a")}
+            </p>
           </div>
           <div className="flex h-auto mb-10 px-20">
-            <div className="flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded mr-2">
-              <p className="text-bright">Drink</p>
+            <div
+              className={`flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded mr-2 ${
+                active === "Drink" ? "bg-bright" : "bg-white"
+              }`}
+              onClick={() => handleActive("Drink")}
+            >
+              <p className={active === "Drink" ? "text-white" : "text-bright"}>
+                Drink
+              </p>
             </div>
-            <div className="flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded mr-2">
-              <p className="text-bright">Starter</p>
+            <div
+              className={`flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded mr-2 ${
+                active === "Starter" ? "bg-bright" : "bg-white"
+              }`}
+              onClick={() => handleActive("Starter")}
+            >
+              <p
+                className={active === "Starter" ? "text-white" : "text-bright"}
+              >
+                Starter
+              </p>
             </div>
-            <div className="flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded mr-2">
-              <p className="text-bright">Appetizer</p>
+            <div
+              className={`flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded mr-2 ${
+                active === "Appetizer" ? "bg-bright" : "bg-white"
+              }`}
+              onClick={() => handleActive("Appetizer")}
+            >
+              <p
+                className={
+                  active === "Appetizer" ? "text-white" : "text-bright"
+                }
+              >
+                Appetizer
+              </p>
             </div>
-            <div className="flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded mr-2">
-              <p className="text-bright">Dessert</p>
+            <div
+              className={`flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded mr-2 ${
+                active === "Dessert" ? "bg-bright" : "bg-white"
+              }`}
+              onClick={() => handleActive("Dessert")}
+            >
+              <p
+                className={active === "Dessert" ? "text-white" : "text-bright"}
+              >
+                Dessert
+              </p>
             </div>
-            <div className="flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded mr-2">
-              <p className="text-bright">Main</p>
+            <div
+              className={`flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded mr-2 ${
+                active === "Main" ? "bg-bright" : "bg-white"
+              }`}
+              onClick={() => handleActive("Main")}
+            >
+              <p className={active === "Main" ? "text-white" : "text-bright"}>
+                Main
+              </p>
             </div>
           </div>
         </div>
         <div className="flex">
           <div className="flex flex-col w-4/5 px-10">
-            <div className="flex justify-between bg-another w-full h-32 py-3 px-3 rounded mb-5">
-              <div className="flex w-full">
-                <div className="flex w-1/6 h-full bg-gray rounded"></div>
-                <div className="flex flex-col ml-5 pt-3">
-                  <p>Kaffir Lime Vodka, Lemongrass, Ginger, Citrus</p>
-                  <p className="font-bold mt-2 mb-2">Tom Yummy - 12.5</p>
-                  <p className="text-bright text-lg">Frw 5,000</p>
-                </div>
+            {isLoading ? (
+              <div className="flex justify-center items-center w-full h-64">
+                <p className="text-gray">Loading...</p>
               </div>
-              <div className="flex h-full items-center pr-5">
-                <AiFillEdit className="text-2xl text-bright" />
-              </div>
-            </div>
-            <div className="flex justify-between bg-another w-full h-32 py-3 px-3 rounded mb-5">
-              <div className="flex w-full">
-                <div className="flex w-1/6 h-full bg-gray rounded"></div>
-                <div className="flex flex-col ml-5 pt-3">
-                  <p>Kaffir Lime Vodka, Lemongrass, Ginger, Citrus</p>
-                  <p className="font-bold mt-2 mb-2">Tom Yummy - 12.5</p>
-                  <p className="text-bright text-lg">Frw 5,000</p>
-                </div>
-              </div>
-              <div className="flex h-full items-center pr-5">
-                <AiFillEdit className="text-2xl text-bright" />
-              </div>
-            </div>
-            <div className="flex justify-between bg-another w-full h-32 py-3 px-3 rounded mb-5">
-              <div className="flex w-full">
-                <div className="flex w-1/6 h-full bg-gray rounded"></div>
-                <div className="flex flex-col ml-5 pt-3">
-                  <p>Kaffir Lime Vodka, Lemongrass, Ginger, Citrus</p>
-                  <p className="font-bold mt-2 mb-2">Tom Yummy - 12.5</p>
-                  <p className="text-bright text-lg">Frw 5,000</p>
-                </div>
-              </div>
-              <div className="flex h-full items-center pr-5">
-                <AiFillEdit className="text-2xl text-bright" />
-              </div>
-            </div>
-            <div className="flex justify-between bg-another w-full h-32 py-3 px-3 rounded mb-5">
-              <div className="flex w-full">
-                <div className="flex w-1/6 h-full bg-gray rounded"></div>
-                <div className="flex flex-col ml-5 pt-3">
-                  <p>Kaffir Lime Vodka, Lemongrass, Ginger, Citrus</p>
-                  <p className="font-bold mt-2 mb-2">Tom Yummy - 12.5</p>
-                  <p className="text-bright text-lg">Frw 5,000</p>
-                </div>
-              </div>
-              <div className="flex h-full items-center pr-5">
-                <AiFillEdit className="text-2xl text-bright" />
-              </div>
-            </div>
+            ) : (
+              <>
+                {products?.map((menu, index) => (
+                  <div
+                    className="flex justify-between bg-another w-full h-32 py-3 px-3 rounded mb-5"
+                    key={index}
+                  >
+                    <div className="flex w-full">
+                      <div className="flex w-1/6 h-full bg-gray rounded"></div>
+                      <div className="flex flex-col ml-5 pt-3 capitalize">
+                        <p>{menu?.ingredients}</p>
+                        <p className="font-bold mt-2 mb-2">{menu?.name}</p>
+                        <p className="text-bright text-lg">Frw {menu?.price}</p>
+                      </div>
+                    </div>
+                    <div className="flex h-full items-center pr-5">
+                      <AiFillEdit className="text-2xl text-bright" />
+                    </div>
+                  </div>
+                ))}
+                {products?.length === 0 && (
+                  <div className="flex justify-center items-center w-full h-64">
+                    <p className="text-gray">No products here</p>
+                  </div>
+                )}
+              </>
+            )}
           </div>
           <div className="flex flex-col w-1/5">
             <div className="flex flex-col w-full h-auto py-4 px-5 items-center justify-center border border-gray rounded mb-2">

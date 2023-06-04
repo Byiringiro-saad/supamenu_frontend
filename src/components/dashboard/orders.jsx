@@ -100,7 +100,7 @@ const Orders = () => {
                     </div>
                   </div>
                 ))}
-                {data?.orders.length === 0 && (
+                {data?.orders?.length === 0 && (
                   <div className="flex justify-center items-center w-full h-64">
                     <p className="text-gray">No orders yet</p>
                   </div>
