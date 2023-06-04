@@ -34,6 +34,10 @@ const Login = () => {
         });
         setTimeout(() => {
           if (res.data.hasRestaurant) {
+            localStorage.setItem(
+              "supamenu_restaurant_id",
+              res.data.hasRestaurant?._id
+            );
             navigate("/dashboard/");
           } else {
             navigate("/create/one");
