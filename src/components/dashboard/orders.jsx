@@ -42,35 +42,51 @@ const Orders = () => {
             <div className="flex h-auto w-4/5 justify-between mb-10 px-20">
               <div
                 className={`flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded ${
-                  active === "Active" ? "bg-bright" : "bg-white"
-                }}`}
-                onClick={() => handleActive("Active")}
+                  active === "New" ? "bg-bright" : "bg-white"
+                }`}
+                onClick={() => handleActive("New")}
               >
-                <p className="text-bright">Active</p>
+                <p className={active === "New" ? "text-white" : "text-bright"}>
+                  New
+                </p>
               </div>
               <div
                 className={`flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded ${
-                  active === "Paid" ? "bg-bright" : "bg-white"
-                }}`}
-                onClick={() => handleActive("Paid")}
+                  active === "Delivered" ? "bg-bright" : "bg-white"
+                }`}
+                onClick={() => handleActive("Delivered")}
               >
-                <p className="text-bright">Paid</p>
+                <p
+                  className={
+                    active === "Delivered" ? "text-white" : "text-bright"
+                  }
+                >
+                  Delivered
+                </p>
               </div>
               <div
                 className={`flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded ${
-                  active === "Pending" ? "bg-bright" : "bg-white"
-                }}`}
-                onClick={() => handleActive("Pending")}
+                  active === "Rejected" ? "bg-bright" : "bg-white"
+                }`}
+                onClick={() => handleActive("Rejected")}
               >
-                <p className="text-bright">Pending</p>
+                <p
+                  className={
+                    active === "Rejected" ? "text-white" : "text-bright"
+                  }
+                >
+                  Rejected
+                </p>
               </div>
               <div
                 className={`flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded ${
                   active === "All" ? "bg-bright" : "bg-white"
-                }}`}
+                }`}
                 onClick={() => handleActive("All")}
               >
-                <p className="text-bright">All</p>
+                <p className={active === "All" ? "text-white" : "text-bright"}>
+                  All
+                </p>
               </div>
             </div>
           </div>

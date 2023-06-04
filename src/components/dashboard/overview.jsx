@@ -9,6 +9,10 @@ import { useQuery } from "react-query";
 import axios from "../../features/axios";
 
 const Overview = () => {
+  //local data
+  const [active, setActive] = useState("All");
+
+  //fetching data
   const { isLoading, data } = useQuery("overview", async () => {
     const res = await axios.get(
       `/orders/all/${localStorage.getItem("supamenu_restaurant_id")}`,
@@ -21,8 +25,6 @@ const Overview = () => {
 
     return res.data;
   });
-
-  const [active, setActive] = useState("All");
 
   const handleActive = (text) => {
     setActive(text);
@@ -54,34 +56,44 @@ const Overview = () => {
             <div
               className={`flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded ${
                 active === "Active" ? "bg-bright" : "bg-white"
-              }}`}
+              }`}
               onClick={() => handleActive("Active")}
             >
-              <p className="text-bright">Active</p>
+              <p className={active === "Active" ? "text-white" : "text-bright"}>
+                Active
+              </p>
             </div>
             <div
               className={`flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded ${
                 active === "Paid" ? "bg-bright" : "bg-white"
-              }}`}
+              }`}
               onClick={() => handleActive("Paid")}
             >
-              <p className="text-bright">Paid</p>
+              <p className={active === "Paid" ? "text-white" : "text-bright"}>
+                Paid
+              </p>
             </div>
             <div
               className={`flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded ${
                 active === "Pending" ? "bg-bright" : "bg-white"
-              }}`}
+              }`}
               onClick={() => handleActive("Pending")}
             >
-              <p className="text-bright">Pending</p>
+              <p
+                className={active === "Pending" ? "text-white" : "text-bright"}
+              >
+                Pending
+              </p>
             </div>
             <div
               className={`flex items-center justify-center border border-bright px-16 py-3 cursor-pointer rounded ${
                 active === "All" ? "bg-bright" : "bg-white"
-              }}`}
+              }`}
               onClick={() => handleActive("All")}
             >
-              <p className="text-bright">All</p>
+              <p className={active === "All" ? "text-white" : "text-bright"}>
+                All
+              </p>
             </div>
           </div>
           {isLoading ? (
