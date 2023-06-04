@@ -33,6 +33,7 @@ const Login = () => {
           position: "top-right",
         });
         setTimeout(() => {
+          console.log(res.data.hasRestaurant);
           if (res.data.hasRestaurant) {
             localStorage.setItem(
               "supamenu_restaurant_id",
