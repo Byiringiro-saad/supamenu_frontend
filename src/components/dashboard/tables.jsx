@@ -7,6 +7,8 @@ import { MdOutlineAdd } from "react-icons/md";
 
 //features
 import axios from "../../features/axios";
+
+//components
 import CreateModal from "../modals/seat";
 
 const Tables = () => {
