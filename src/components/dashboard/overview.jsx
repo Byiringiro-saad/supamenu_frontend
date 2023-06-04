@@ -3,21 +3,23 @@ import moment from "moment/moment";
 import { useQuery } from "react-query";
 
 //icons
-import { MdOutlineAdd } from "react-icons/md";
+// import { MdOutlineAdd } from "react-icons/md";
 
 //features
 import axios from "../../features/axios";
 
 const Overview = () => {
-  const { isLoading, data } = useQuery("overview", () => {
-    axios
-      .get(`/orders/all/${localStorage.getItem("supamenu_restaurant_id")}`, {
+  const { isLoading, data } = useQuery("overview", async () => {
+    const res = await axios.get(
+      `/orders/all/${localStorage.getItem("supamenu_restaurant_id")}`,
+      {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("supamenu_token")}`,
         },
-      })
-      .then((res) => res.data)
-      .catch((err) => console.log(err));
+      }
+    );
+
+    return res.data;
   });
 
   const [active, setActive] = useState("All");
@@ -88,7 +90,7 @@ const Overview = () => {
             </div>
           ) : (
             <>
-              {data?.result?.map((item, key) => (
+              {data?.orders?.map((item, key) => (
                 <div className="flex flex-col w-full px-20 mb-5" key={key}>
                   <div className="flex w-full justify-between p-5 h-28 bg-another rounded">
                     <p className="text-bright w-1/5 text-center text-lg">
@@ -107,6 +109,11 @@ const Overview = () => {
                   </div>
                 </div>
               ))}
+              {data?.orders.length === 0 && (
+                <div className="flex justify-center items-center w-full h-64">
+                  <p className="text-gray">No orders yet</p>
+                </div>
+              )}
             </>
           )}
         </div>
@@ -202,7 +209,7 @@ const Overview = () => {
             </div>
           </div>
         </div> */}
-        <div className="flex flex-col w-full bg-white border border-gray rounded p-5 mb-5">
+        {/* <div className="flex flex-col w-full bg-white border border-gray rounded p-5 mb-5">
           <div className="flex justify-between">
             <div className="flex flex-col">
               <p className="text-lg text-black">Create</p>
@@ -243,7 +250,7 @@ const Overview = () => {
               <p className="text-white">Default</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
